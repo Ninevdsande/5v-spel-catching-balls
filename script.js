@@ -4,20 +4,20 @@ function setup() {
 
 var score = 0;
 var speed = 3;
-var screen = 0;
+var screen = 1;
 var y = -20;
 var x = 200;
 
 function draw() {
 	if(screen == 0){
-    startScreen()
+    startscherm()
   }else if(screen == 1){
   	gameOn()
   }else if(screen==2){
-  	endScreen()
+  	eindscherm()
   }	
 }
-function startScreen(){
+function startscherm(){
     background('#fae');
 		textAlign(CENTER);
     textFont('Georgia');
