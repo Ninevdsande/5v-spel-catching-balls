@@ -26,3 +26,8 @@ function startscherm(){
 		text('Klik om het spel te starten', width / 2, height / 2 + 20);
 		reset();
 }
+
+function gameOn(){
+  background(51);
+  
+}
