@@ -33,7 +33,7 @@ function gameOn(){
   background(0);
    text("score = " + score, 30,20)
    fill(255);
-   text("highscore =" + highscore,30,40)
+   text("highscore = " + highscore,40,40)
    fill(255);
    ellipse(x,y,20,20)
    rectMode(CENTER)
@@ -52,6 +52,13 @@ function gameOn(){
   }
 }
 
+function eindscherm(){
+		background('#fae')
+		textAlign(CENTER);
+		text('GAME OVER', width / 2, height / 2)
+  	text("SCORE = " + score, width / 2, height / 2 + 20)
+		text('Klik de muis om nog een keer te spelen', width / 2, height / 2 + 40);
+}
 function pickRandom(){
 	x= random(20,width-20)
 }
