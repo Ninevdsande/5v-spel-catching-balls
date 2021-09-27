@@ -5,9 +5,10 @@ function setup() {
 
 var score = 0;
 var speed = 3;
-var screen = 1;
+var screen = 0;
 var y = -20;
 var x = 200;
+var  highscore = 0;
 
 function draw() {
 	if(screen == 0){
@@ -42,4 +43,18 @@ function gameOn(){
   	screen =2
 	 }
    
+}
+
+function reset(){
+	  score=0;
+  	speed=2;
+  	y=-20;
+}
+
+function mousePressed(){
+	if(screen==0){
+  	screen=1
+  }else if(screen==2){
+  	screen=0
+  }
 }
