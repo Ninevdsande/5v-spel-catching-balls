@@ -35,15 +35,28 @@ function gameOn(){
    fill(255);
    text("highscore =" + highscore,30,40)
    fill(255);
-   ellipse(100,100,20,20)
+   ellipse(x,y,20,20)
    rectMode(CENTER)
    rect(mouseX,height-10,50,30)
 	y+= speed;
   if(y>height){
   	screen =2
 	 }
-   
+  if(y>height-10 && x>mouseX-20 && x<mouseX+20){
+	y=-20
+  speed+=.5
+  score+= 1
+  }
+	if(y==-20){
+  	pickRandom();
+  }
 }
+
+function pickRandom(){
+	x= random(20,width-20)
+}
+   
+
 
 function reset(){
 	  score=0;
