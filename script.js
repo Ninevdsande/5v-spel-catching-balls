@@ -1,5 +1,6 @@
 function setup() {
 	createCanvas(600, 400);
+  highscore = 0;
 }
 
 var score = 0;
@@ -28,6 +29,17 @@ function startscherm(){
 }
 
 function gameOn(){
-  background(51);
-  
+  background(0);
+   text("score = " + score, 30,20)
+   fill(255);
+   text("highscore =" + highscore,30,40)
+   fill(255);
+   ellipse(100,100,20,20)
+   rectMode(CENTER)
+   rect(mouseX,height-10,50,30)
+	y+= speed;
+  if(y>height){
+  	screen =2
+	 }
+   
 }
