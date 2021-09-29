@@ -46,6 +46,8 @@ function gameOn(){
 	y=-20
   speed+=.5
   score+= 1
+    if(score> highscore)
+      highscore = score
   }
 	if(y==-20){
   	pickRandom();
