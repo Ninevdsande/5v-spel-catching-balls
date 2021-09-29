@@ -1,7 +1,8 @@
 function setup() {
-	createCanvas(600, 400);
-  highscore = 0;
+	createCanvas(600, 350);
+  bg = loadImage("achtergrond.jpg");
 }
+
 
 var score = 0;
 var speed = 3;
@@ -9,8 +10,10 @@ var screen = 0;
 var y = -20;
 var x = 200;
 var  highscore = 0;
+var bg;
 
 function draw() {
+  background(0)
 	if(screen == 0){
     startscherm()
   }else if(screen == 1){
@@ -30,11 +33,11 @@ function startscherm(){
 }
 
 function gameOn(){
-  background(0);
-   text("score = " + score, 30,20)
-   fill(255);
-   text("highscore = " + highscore,40,40)
-   fill(255);
+  background(bg);
+   text("score = " + score, 30,40)
+   fill(0);
+   text("highscore = " + highscore,40,60)
+   fill(0);
    ellipse(x,y,20,20)
    rectMode(CENTER)
    rect(mouseX,height-10,50,30)
