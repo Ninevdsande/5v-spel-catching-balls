@@ -2,6 +2,7 @@ function setup() {
 	createCanvas(625, 350);
   bg = loadImage("achtergrond.jpg");
   nn = loadImage("vis.png");
+  druppelgeluid = loadSound("druppelgeluid.mp3");
 }
 
 
@@ -50,6 +51,7 @@ function gameOn(){
 	y=-20
   speed+=.5
   score+= 1
+  druppelgeluid.play()
     if(score> highscore)
       highscore = score
   }
