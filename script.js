@@ -10,7 +10,8 @@ var speed = 3;
 var screen = 0;
 var highscore = 0;
 var bg;
-var balls = [];
+var vissen = [];
+var vierkant = {mouseX, height - 10, 50, 30};
 
 class Vis {
   constructor(x, y) {
@@ -39,6 +40,10 @@ class Vis {
 
 }
 
+class vierkant {
+
+}
+
 function draw() {
   background(0)
   if (screen == 0) {
@@ -59,18 +64,18 @@ function gameOn() {
 
 
   if (frameCount % 100 == 0) {
-    balls.push(new Vis());
+    vissen.push(new Vis());
   }
 
-  balls.forEach((b) => {
+  vissen.forEach((b) => {
     b.draw();
     b.checkCollision();
   });
 
   rectMode(CENTER)
   rect(mouseX, height - 10, 50, 30)
-  y += speed;
-  if (y > height) {
+  this.y += speed;
+  if (this.y > height) {
     screen = 2
   }
 
@@ -87,7 +92,6 @@ function startscherm() {
   fill(0, 102, 153);
   text('Welkom bij het spel "ÇATCHING BALLS"!', width / 2, height / 2)
   text('Klik om het spel te starten', width / 2, height / 2 + 20);
-  reset();
 }
 function eindscherm() {
   background('#fae')
@@ -98,14 +102,6 @@ function eindscherm() {
 }
 function pickRandom() {
   this.x = random(20, width - 20)
-}
-
-
-
-function reset() {
-  score = 0;
-  speed = 2;
-  y = -20;
 }
 
 function mousePressed() {
