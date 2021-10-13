@@ -3,6 +3,7 @@ function setup() {
   bg = loadImage("achtergrond.jpg");
   nn = loadImage("vis.png");
   druppelgeluid = loadSound("druppelgeluid.mp3");
+  player = new Vierkant();
 }
 
 var score = 0;
@@ -11,37 +12,66 @@ var screen = 0;
 var highscore = 0;
 var bg;
 var vissen = [];
-var vierkant = {mouseX, height - 10, 50, 30};
+
 
 class Vis {
-  constructor(x, y) {
+  constructor(x, y, w, h) {
     this.x = random(width);
     this.y = 0;
     this.w = 30;
     this.h = 30;
+    this.isCaught = false;
 
+    if (score > 5) {
+      this.vy = 7;
+    }
+    if (score > 15) {
+      this.vy = 9 ;
+    }
+    else {
+      this.vy = 5;
+    }
   }
+
   draw() {
     fill(0);
     image(nn, this.x, this.y, this.w, this.h);
-    this.y += 5;
+    this.y += this.vy;
+
   }
 
   checkCollision() {
-    if (this.y > height - 10 && this.x > mouseX - 30 && this.x < mouseX + 30) {
-      y = -20
-      speed += .5
-      score += 1
-      druppelgeluid.play()
-      if (score > highscore)
-        highscore = score
+    if (player.y < this.y) {
+      if (player.x + player.w > this.x && player.x < this.x + this.w) {
+
+        druppelgeluid.play()
+        score += 1
+
+        let idx = vissen.indexOf(this);
+        vissen.splice(idx, 1);
+      }
+    }
+
+    if (this.y > height) {
+      screen = 2;
     }
   }
 
 }
 
-class vierkant {
+class Vierkant {
+  constructor() {
+    this.x = 100;
+    this.y = height - 10;
+    this.w = 50;
+    this.h = 10;
+  }
 
+  draw() {
+    //rectMode(CENTER)
+    this.x = mouseX;
+    rect(this.x, this.y, this.w, this.h);
+  }
 }
 
 function draw() {
@@ -62,8 +92,15 @@ function gameOn() {
   fill(0);
   text("highscore = " + highscore, 40, 60)
 
+  player.draw();
 
   if (frameCount % 100 == 0) {
+    
+    vissen.push(new Vis());
+
+  }
+  if (frameCount % 100 == 50) {
+
     vissen.push(new Vis());
   }
 
@@ -72,8 +109,6 @@ function gameOn() {
     b.checkCollision();
   });
 
-  rectMode(CENTER)
-  rect(mouseX, height - 10, 50, 30)
   this.y += speed;
   if (this.y > height) {
     screen = 2
@@ -98,6 +133,7 @@ function eindscherm() {
   textAlign(CENTER);
   text('GAME OVER', width / 2, height / 2)
   text("SCORE = " + score, width / 2, height / 2 + 20)
+ //
   text('Klik de muis om nog een keer te spelen', width / 2, height / 2 + 40);
 }
 function pickRandom() {
@@ -106,9 +142,18 @@ function pickRandom() {
 
 function mousePressed() {
   if (screen == 0) {
-    screen = 1
+    screen = 1;
   }
   else if (screen == 2) {
-    screen = 0
+    vissen = [];
+    score = 0;
+    if (score > highscore)
+      highscore = score
+
+    screen = 0;
+
+
+
+
   }
 }
