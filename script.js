@@ -28,6 +28,9 @@ class Vis {
     if (score > 15) {
       this.vy = 9;
     }
+    if (score > 35){
+      this.vy = 13
+    }
     else {
       this.vy = 5;
     }
