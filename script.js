@@ -26,7 +26,7 @@ class Vis {
       this.vy = 7;
     }
     if (score > 15) {
-      this.vy = 9 ;
+      this.vy = 9;
     }
     else {
       this.vy = 5;
@@ -46,6 +46,8 @@ class Vis {
 
         druppelgeluid.play()
         score += 1
+        if (score > highscore)
+          highscore = score
 
         let idx = vissen.indexOf(this);
         vissen.splice(idx, 1);
@@ -95,7 +97,7 @@ function gameOn() {
   player.draw();
 
   if (frameCount % 100 == 0) {
-    
+
     vissen.push(new Vis());
 
   }
@@ -133,8 +135,8 @@ function eindscherm() {
   textAlign(CENTER);
   text('GAME OVER', width / 2, height / 2)
   text("SCORE = " + score, width / 2, height / 2 + 20)
- //
-  text('Klik de muis om nog een keer te spelen', width / 2, height / 2 + 40);
+  text("HIGHSCORE =" + highscore, width / 2, height / 2 + 40)
+  text('Klik de muis om nog een keer te spelen', width / 2, height / 2 + 60);
 }
 function pickRandom() {
   this.x = random(20, width - 20)
@@ -147,8 +149,8 @@ function mousePressed() {
   else if (screen == 2) {
     vissen = [];
     score = 0;
-    if (score > highscore)
-      highscore = score
+    //if (score > highscore)
+    //highscore = score
 
     screen = 0;
 
