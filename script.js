@@ -20,7 +20,7 @@ class Vis {
     this.y = 0;
     this.w = 30;
     this.h = 30;
-    this.isCaught = false;
+  
 
     if (score > 5) {
       this.vy = 7;
@@ -70,7 +70,6 @@ class Vierkant {
   }
 
   draw() {
-    //rectMode(CENTER)
     this.x = mouseX;
     rect(this.x, this.y, this.w, this.h);
   }
@@ -90,9 +89,10 @@ function draw() {
 function gameOn() {
 
   background(bg);
-  text("score = " + score, 30, 40)
+  text("Score = " + score, 30, 40)
   fill(0);
-  text("highscore = " + highscore, 40, 60)
+  text("Highscore = " + highscore, 40, 60)
+  text("Beweeg de muis om de vissen te vangen!", 300, 60)
 
   player.draw();
 
@@ -133,6 +133,8 @@ function startscherm() {
 function eindscherm() {
   background('#fae')
   textAlign(CENTER);
+  textFont('Georgia');
+  fill(0, 102, 153);
   text('GAME OVER', width / 2, height / 2)
   text("SCORE = " + score, width / 2, height / 2 + 20)
   text("HIGHSCORE =" + highscore, width / 2, height / 2 + 40)
@@ -149,13 +151,8 @@ function mousePressed() {
   else if (screen == 2) {
     vissen = [];
     score = 0;
-    //if (score > highscore)
-    //highscore = score
-
+  
     screen = 0;
-
-
-
 
   }
 }
