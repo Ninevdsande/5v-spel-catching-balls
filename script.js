@@ -25,7 +25,7 @@ class Vis {
     if (score > 5) {
       this.vy = 7;
     }
-    if (score > 15) {
+    if (score > 10) {
       this.vy = 9;
     }
     if (score > 35){
@@ -130,7 +130,7 @@ function startscherm() {
   textAlign(CENTER);
   textFont('Georgia');
   fill(0, 102, 153);
-  text('Welkom bij het spel "ÇATCHING BALLS"!', width / 2, height / 2)
+  text('Welkom bij het spel "ÇATCHING FISH"!', width / 2, height / 2)
   text('Klik om het spel te starten', width / 2, height / 2 + 20);
 }
 function eindscherm() {
